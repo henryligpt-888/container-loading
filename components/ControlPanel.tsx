@@ -77,16 +77,16 @@ export const ControlPanel: React.FC<ControlPanelProps> = ({
     <div className="flex flex-col h-full bg-white border-r border-slate-200 shadow-xl z-20 w-full lg:w-[450px] lg:max-w-[450px] flex-shrink-0">
       
       {/* Header */}
-      <div className="p-6 border-b border-slate-100 bg-slate-50/50">
-        <h1 className="text-2xl font-extrabold text-slate-800 flex items-center gap-3 tracking-tight">
-          <Box className="w-8 h-8 text-blue-600 fill-blue-100" />
+      <div className="p-4 lg:p-6 border-b border-slate-100 bg-slate-50/50 flex-shrink-0">
+        <h1 className="text-xl lg:text-2xl font-extrabold text-slate-800 flex items-center gap-2 lg:gap-3 tracking-tight">
+          <Box className="w-6 h-6 lg:w-8 lg:h-8 text-blue-600 fill-blue-100" />
           智能装箱模拟器
         </h1>
-        <p className="text-sm text-slate-500 mt-1 ml-11">SmartLoad 3D Visualization</p>
+        <p className="text-xs lg:text-sm text-slate-500 mt-1 ml-8 lg:ml-11">SmartLoad 3D Visualization</p>
       </div>
 
-      <div className="flex-1 overflow-y-auto custom-scrollbar">
-        <div className="p-6 space-y-8">
+      <div className="flex-1 overflow-y-auto custom-scrollbar pb-4">
+        <div className="p-4 lg:p-6 space-y-6 lg:space-y-8">
           
           {/* Container Selection */}
           <section className="space-y-4">
@@ -252,7 +252,7 @@ export const ControlPanel: React.FC<ControlPanelProps> = ({
               )}
             </div>
 
-            <div className="space-y-3 max-h-[400px] overflow-y-auto pr-1 custom-scrollbar">
+            <div className="space-y-3 max-h-[300px] lg:max-h-[400px] overflow-y-auto pr-1 custom-scrollbar">
               {boxes.length === 0 ? (
                 <div className="text-center py-10 text-slate-400 text-sm border-2 border-dashed border-slate-100 rounded-xl bg-slate-50/50">
                   <p className="text-base font-medium text-slate-500">暂无货物</p>
@@ -321,7 +321,7 @@ export const ControlPanel: React.FC<ControlPanelProps> = ({
       </div>
 
       {/* Footer Actions */}
-      <div className="p-6 bg-slate-50 border-t border-slate-200 space-y-4">
+      <div className="p-4 lg:p-6 bg-slate-50 border-t border-slate-200 space-y-3 lg:space-y-4 flex-shrink-0">
         <div className="grid grid-cols-2 gap-4">
           <button 
             onClick={onReset}
