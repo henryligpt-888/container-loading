@@ -75,9 +75,9 @@ export const ControlPanel: React.FC<ControlPanelProps> = ({
 
   return (
     <div className="flex flex-col h-full bg-white border-r border-slate-200 shadow-xl z-20 w-full lg:w-[450px] lg:max-w-[450px] flex-shrink-0">
-      
-      {/* Header */}
-      <div className="p-4 lg:p-6 border-b border-slate-100 bg-slate-50/50 flex-shrink-0">
+
+      {/* Header - Fixed on desktop, scrollable on mobile */}
+      <div className="p-4 lg:p-6 border-b border-slate-100 bg-slate-50/50 lg:flex-shrink-0">
         <h1 className="text-xl lg:text-2xl font-extrabold text-slate-800 flex items-center gap-2 lg:gap-3 tracking-tight">
           <Box className="w-6 h-6 lg:w-8 lg:h-8 text-blue-600 fill-blue-100" />
           智能装箱模拟器
@@ -85,8 +85,10 @@ export const ControlPanel: React.FC<ControlPanelProps> = ({
         <p className="text-xs lg:text-sm text-slate-500 mt-1 ml-8 lg:ml-11">SmartLoad 3D Visualization</p>
       </div>
 
-      <div className="flex-1 overflow-y-auto custom-scrollbar pb-2">
-        <div className="p-3 lg:p-6 space-y-4 lg:space-y-8">
+      {/* Mobile: Everything scrollable | Desktop: Only middle section scrollable */}
+      <div className="flex-1 overflow-y-auto lg:overflow-y-hidden lg:flex lg:flex-col">
+        <div className="lg:flex-1 lg:overflow-y-auto custom-scrollbar">
+          <div className="p-3 lg:p-6 space-y-4 lg:space-y-8">
           
           {/* Container Selection */}
           <section className="space-y-3">
@@ -317,11 +319,11 @@ export const ControlPanel: React.FC<ControlPanelProps> = ({
             </div>
           </section>
 
+          </div>
         </div>
-      </div>
 
-      {/* Footer Actions */}
-      <div className="p-3 lg:p-6 bg-slate-50 border-t border-slate-200 space-y-2 lg:space-y-4 flex-shrink-0">
+        {/* Footer Actions - Part of scrollable area on mobile, fixed on desktop */}
+        <div className="p-3 lg:p-6 bg-slate-50 border-t border-slate-200 space-y-2 lg:space-y-4 lg:flex-shrink-0">
         <div className="grid grid-cols-2 gap-3">
           <button
             onClick={onReset}
@@ -363,6 +365,7 @@ export const ControlPanel: React.FC<ControlPanelProps> = ({
               )}
            </div>
         )}
+        </div>
       </div>
     </div>
   );
