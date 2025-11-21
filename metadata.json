@@ -1,0 +1,5 @@
+{
+  "name": "3D Container Packer",
+  "description": "A 3D container loading simulator using greedy packing algorithms with packing constraints.",
+  "requestFramePermissions": []
+}
