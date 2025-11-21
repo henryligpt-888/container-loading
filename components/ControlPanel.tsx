@@ -74,7 +74,7 @@ export const ControlPanel: React.FC<ControlPanelProps> = ({
   const notFittedCount = boxes.length - placedCount;
 
   return (
-    <div className="flex flex-col h-full bg-white border-r border-slate-200 shadow-xl z-20 w-[450px] max-w-full flex-shrink-0">
+    <div className="flex flex-col h-full bg-white border-r border-slate-200 shadow-xl z-20 w-full lg:w-[450px] lg:max-w-[450px] flex-shrink-0">
       
       {/* Header */}
       <div className="p-6 border-b border-slate-100 bg-slate-50/50">
