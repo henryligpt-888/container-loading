@@ -2,7 +2,14 @@
   "permissions": {
     "allow": [
       "Bash(git init:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nInitial commit: 3D container packing application\n\nThis is a 3D container loading/packing visualization application built with React, Three.js, and TypeScript. Features include:\n- Interactive 3D visualization of container packing\n- Multiple packing algorithms (First Fit, Best Fit, Custom)\n- Real-time space utilization statistics\n- Box management and visualization\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git remote add:*)",
+      "Bash(git push:*)",
+      "Bash(mkdir:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\ndocs: 添加项目标准文档（中文版）\n\n本次提交添加了完整的项目文档体系，包括：\n\n## 新增文档\n- 📘 BLUEPRINT.md - 项目技术蓝图（12KB）\n  * 完整技术架构说明\n  * 核心模块详解（装箱算法、3D可视化）\n  * 集装箱规格数据表\n  * 开发部署指南\n\n- 🤖 CLAUDE.md - AI协作指南（12KB）\n  * 技术决策背景解析\n  * 代码架构深度解读\n  * 关键代码逐行分析\n  * 开发工作流建议\n\n- ✅ tasks/todo.md - 任务清单（9KB）\n  * 已完成功能列表（17项）\n  * 待完成任务（按P0/P1/P2优先级分类）\n  * 版本迭代规划（v0.2.0 → v2.0.0）\n  * 开发规范与Commit消息规范\n\n- 📝 docs/session-notes/2025-01-21-init.md - 会话记录\n  * 项目代码审阅结果\n  * 决策记录与讨论\n  * 改进建议与下一步计划\n\n## 文档特色\n- 全中文撰写，降低协作门槛\n- 详细的技术分析与代码示例\n- 清晰的任务优先级与时间规划\n- 完整的学习路径与参考资源\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(npm run build:*)",
+      "Bash(git commit:*)"
     ],
     "deny": [],
     "ask": []

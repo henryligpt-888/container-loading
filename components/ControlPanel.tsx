@@ -254,7 +254,7 @@ export const ControlPanel: React.FC<ControlPanelProps> = ({
               )}
             </div>
 
-            <div className="space-y-2 max-h-[200px] lg:max-h-[400px] overflow-y-auto pr-1 custom-scrollbar">
+            <div className="space-y-2 lg:max-h-[400px] lg:overflow-y-auto pr-1 custom-scrollbar">
               {boxes.length === 0 ? (
                 <div className="text-center py-10 text-slate-400 text-sm border-2 border-dashed border-slate-100 rounded-xl bg-slate-50/50">
                   <p className="text-base font-medium text-slate-500">暂无货物</p>
