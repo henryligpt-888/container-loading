@@ -85,35 +85,35 @@ export const ControlPanel: React.FC<ControlPanelProps> = ({
         <p className="text-xs lg:text-sm text-slate-500 mt-1 ml-8 lg:ml-11">SmartLoad 3D Visualization</p>
       </div>
 
-      <div className="flex-1 overflow-y-auto custom-scrollbar pb-4">
-        <div className="p-4 lg:p-6 space-y-6 lg:space-y-8">
+      <div className="flex-1 overflow-y-auto custom-scrollbar pb-2">
+        <div className="p-3 lg:p-6 space-y-4 lg:space-y-8">
           
           {/* Container Selection */}
-          <section className="space-y-4">
+          <section className="space-y-3">
             <h2 className="text-sm font-bold text-slate-500 uppercase tracking-wider flex items-center gap-2">
               <LayoutGrid className="w-4 h-4" />
               货柜型号选择
             </h2>
-            <div className="grid grid-cols-3 gap-2">
+            <div className="flex gap-2 overflow-x-auto pb-2 -mx-1 px-1 scrollbar-thin">
               {CONTAINER_TYPES.map((c) => (
                 <button
                   key={c.name}
                   onClick={() => onContainerChange(c)}
-                  className={`px-2 py-3 rounded-lg text-sm font-medium border transition-all flex flex-col items-center justify-center gap-1 ${
+                  className={`px-4 py-2.5 rounded-lg text-sm font-medium border transition-all flex-shrink-0 ${
                     currentContainer.name === c.name
-                      ? 'bg-blue-600 text-white border-blue-600 shadow-md shadow-blue-200 ring-2 ring-blue-100'
+                      ? 'bg-blue-600 text-white border-blue-600 shadow-md'
                       : 'bg-white text-slate-600 border-slate-200 hover:border-blue-300 hover:bg-blue-50'
                   }`}
                   title={c.description}
                 >
-                  <span className="font-bold">{c.name}</span>
-                  <span className={`text-[10px] ${currentContainer.name === c.name ? 'text-blue-100' : 'text-slate-400'}`}>
+                  <div className="font-bold">{c.name}</div>
+                  <div className={`text-[10px] mt-0.5 ${currentContainer.name === c.name ? 'text-blue-100' : 'text-slate-400'}`}>
                     {c.label.split(' ')[1] || c.label}
-                  </span>
+                  </div>
                 </button>
               ))}
             </div>
-            <div className="text-sm text-center text-slate-500 bg-slate-50 py-2 rounded border border-slate-100 font-mono">
+            <div className="text-xs text-center text-slate-500 bg-slate-50 py-1.5 rounded border border-slate-100 font-mono">
                内尺寸: {currentContainer.width}×{currentContainer.depth}×{currentContainer.height} cm
             </div>
           </section>
@@ -121,23 +121,23 @@ export const ControlPanel: React.FC<ControlPanelProps> = ({
           <hr className="border-slate-100" />
 
           {/* Add Cargo Form */}
-          <section className="space-y-4">
+          <section className="space-y-3">
             <h2 className="text-sm font-bold text-slate-500 uppercase tracking-wider flex items-center gap-2">
               <Package className="w-4 h-4" />
               添加新货物
             </h2>
-            <form onSubmit={handleAdd} className="space-y-5">
-              
+            <form onSubmit={handleAdd} className="space-y-4">
+
               {/* Colors */}
               <div>
                 <label className="text-xs font-bold text-slate-500 uppercase mb-2 block">货物颜色</label>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex gap-2 overflow-x-auto pb-2 -mx-1 px-1 scrollbar-thin">
                   {PRESET_COLORS.map((color) => (
                     <button
                       key={color}
                       type="button"
                       onClick={() => setSelectedColor(color)}
-                      className={`w-8 h-8 rounded-full shadow-sm transition-transform hover:scale-110 focus:outline-none flex items-center justify-center ${selectedColor === color ? 'ring-2 ring-offset-2 ring-slate-400 scale-110' : ''}`}
+                      className={`w-10 h-10 flex-shrink-0 rounded-full shadow-sm transition-transform hover:scale-110 focus:outline-none flex items-center justify-center ${selectedColor === color ? 'ring-2 ring-offset-2 ring-slate-400 scale-110' : ''}`}
                       style={{ backgroundColor: color }}
                     >
                       {selectedColor === color && <Check className="w-4 h-4 text-white drop-shadow-md" />}
@@ -147,34 +147,34 @@ export const ControlPanel: React.FC<ControlPanelProps> = ({
               </div>
 
               {/* Dimensions */}
-              <div className="grid grid-cols-3 gap-4">
-                <div className="space-y-1.5">
+              <div className="grid grid-cols-3 gap-3">
+                <div className="space-y-1">
                   <label className="text-xs font-bold text-slate-500 uppercase">长 (cm)</label>
-                  <input 
-                    type="number" 
-                    className="w-full px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-base font-mono text-slate-700"
+                  <input
+                    type="number"
+                    className="w-full px-2 py-2 bg-slate-50 border border-slate-200 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-sm font-mono text-slate-700"
                     placeholder="60"
                     value={length}
                     onChange={e => setLength(e.target.value)}
                     min="1"
                   />
                 </div>
-                <div className="space-y-1.5">
+                <div className="space-y-1">
                   <label className="text-xs font-bold text-slate-500 uppercase">宽 (cm)</label>
-                  <input 
-                    type="number" 
-                    className="w-full px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-base font-mono text-slate-700"
+                  <input
+                    type="number"
+                    className="w-full px-2 py-2 bg-slate-50 border border-slate-200 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-sm font-mono text-slate-700"
                     placeholder="40"
                     value={width}
                     onChange={e => setWidth(e.target.value)}
                     min="1"
                   />
                 </div>
-                <div className="space-y-1.5">
+                <div className="space-y-1">
                   <label className="text-xs font-bold text-slate-500 uppercase">高 (cm)</label>
-                  <input 
-                    type="number" 
-                    className="w-full px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-base font-mono text-slate-700"
+                  <input
+                    type="number"
+                    className="w-full px-2 py-2 bg-slate-50 border border-slate-200 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-sm font-mono text-slate-700"
                     placeholder="40"
                     value={height}
                     onChange={e => setHeight(e.target.value)}
@@ -184,12 +184,12 @@ export const ControlPanel: React.FC<ControlPanelProps> = ({
               </div>
 
               {/* Weight & Quantity */}
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-1.5">
+              <div className="grid grid-cols-2 gap-3">
+                <div className="space-y-1">
                   <label className="text-xs font-bold text-slate-500 uppercase">单件重量 (kg)</label>
-                  <input 
-                    type="number" 
-                    className="w-full px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-base font-mono text-slate-700"
+                  <input
+                    type="number"
+                    className="w-full px-2 py-2 bg-slate-50 border border-slate-200 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-sm font-mono text-slate-700"
                     placeholder="10"
                     value={weight}
                     onChange={e => setWeight(e.target.value)}
@@ -197,11 +197,11 @@ export const ControlPanel: React.FC<ControlPanelProps> = ({
                     step="0.1"
                   />
                 </div>
-                <div className="space-y-1.5">
+                <div className="space-y-1">
                     <label className="text-xs font-bold text-slate-500 uppercase">添加数量 (件)</label>
-                    <input 
-                      type="number" 
-                      className="w-full px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-base font-mono text-slate-700"
+                    <input
+                      type="number"
+                      className="w-full px-2 py-2 bg-slate-50 border border-slate-200 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-sm font-mono text-slate-700"
                       placeholder="1"
                       value={quantity}
                       onChange={e => setQuantity(e.target.value)}
@@ -212,27 +212,27 @@ export const ControlPanel: React.FC<ControlPanelProps> = ({
               </div>
 
               {/* Checkbox */}
-              <div className="flex items-center pt-1">
-                 <label className="flex items-center space-x-3 cursor-pointer group p-1">
+              <div className="flex items-center">
+                 <label className="flex items-center space-x-2 cursor-pointer group">
                   <div className="relative flex items-center">
-                    <input 
-                      type="checkbox" 
+                    <input
+                      type="checkbox"
                       checked={cantStackTop}
                       onChange={e => setCantStackTop(e.target.checked)}
                       className="peer sr-only"
                     />
-                    <div className="w-6 h-6 border-2 border-slate-300 rounded peer-checked:bg-blue-500 peer-checked:border-blue-500 transition-all"></div>
-                    <Check className="absolute w-4 h-4 text-white opacity-0 peer-checked:opacity-100 transition-opacity pointer-events-none left-1" />
+                    <div className="w-5 h-5 border-2 border-slate-300 rounded peer-checked:bg-blue-500 peer-checked:border-blue-500 transition-all"></div>
+                    <Check className="absolute w-3.5 h-3.5 text-white opacity-0 peer-checked:opacity-100 transition-opacity pointer-events-none left-0.5" />
                   </div>
-                  <span className="text-base text-slate-700 group-hover:text-slate-900 select-none">上方禁放 (易碎品)</span>
+                  <span className="text-sm text-slate-700 group-hover:text-slate-900 select-none">上方禁放 (易碎品)</span>
                 </label>
               </div>
 
-              <button 
-                type="submit" 
-                className="w-full flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 text-white py-3.5 rounded-lg text-base font-bold transition-all shadow-lg shadow-slate-200 active:scale-[0.98]"
+              <button
+                type="submit"
+                className="w-full flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 text-white py-3 rounded-lg text-sm font-bold transition-all shadow-lg shadow-slate-200 active:scale-[0.98]"
               >
-                <Plus className="w-5 h-5" />
+                <Plus className="w-4 h-4" />
                 添加到货物列表
               </button>
             </form>
@@ -252,7 +252,7 @@ export const ControlPanel: React.FC<ControlPanelProps> = ({
               )}
             </div>
 
-            <div className="space-y-3 max-h-[300px] lg:max-h-[400px] overflow-y-auto pr-1 custom-scrollbar">
+            <div className="space-y-2 max-h-[200px] lg:max-h-[400px] overflow-y-auto pr-1 custom-scrollbar">
               {boxes.length === 0 ? (
                 <div className="text-center py-10 text-slate-400 text-sm border-2 border-dashed border-slate-100 rounded-xl bg-slate-50/50">
                   <p className="text-base font-medium text-slate-500">暂无货物</p>
@@ -321,20 +321,20 @@ export const ControlPanel: React.FC<ControlPanelProps> = ({
       </div>
 
       {/* Footer Actions */}
-      <div className="p-4 lg:p-6 bg-slate-50 border-t border-slate-200 space-y-3 lg:space-y-4 flex-shrink-0">
-        <div className="grid grid-cols-2 gap-4">
-          <button 
+      <div className="p-3 lg:p-6 bg-slate-50 border-t border-slate-200 space-y-2 lg:space-y-4 flex-shrink-0">
+        <div className="grid grid-cols-2 gap-3">
+          <button
             onClick={onReset}
             disabled={boxes.length === 0}
-            className="flex items-center justify-center gap-2 bg-white border border-slate-200 hover:bg-slate-100 hover:border-slate-300 text-slate-700 py-3.5 rounded-lg font-bold transition-colors shadow-sm disabled:opacity-50 text-sm"
+            className="flex items-center justify-center gap-1.5 bg-white border border-slate-200 hover:bg-slate-100 hover:border-slate-300 text-slate-700 py-2.5 lg:py-3.5 rounded-lg font-bold transition-colors shadow-sm disabled:opacity-50 text-xs lg:text-sm"
           >
-            <RotateCcw className="w-4 h-4" />
+            <RotateCcw className="w-3.5 h-3.5 lg:w-4 lg:h-4" />
             重置位置
           </button>
-          <button 
+          <button
             onClick={onCalculate}
             disabled={boxes.length === 0 || isCalculating}
-            className="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-300 disabled:cursor-not-allowed text-white py-3.5 rounded-lg font-bold transition-all shadow-lg shadow-blue-200 text-sm"
+            className="flex items-center justify-center gap-1.5 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-300 disabled:cursor-not-allowed text-white py-2.5 lg:py-3.5 rounded-lg font-bold transition-all shadow-lg shadow-blue-200 text-xs lg:text-sm"
           >
             {isCalculating ? (
               <span className="flex items-center gap-2">
