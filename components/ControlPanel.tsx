@@ -86,7 +86,7 @@ export const ControlPanel: React.FC<ControlPanelProps> = ({
       </div>
 
       {/* Mobile: Everything scrollable | Desktop: Only middle section scrollable */}
-      <div className="flex-1 overflow-y-auto lg:overflow-y-hidden lg:flex lg:flex-col">
+      <div className="flex-1 overflow-y-auto custom-scrollbar lg:overflow-y-hidden lg:flex lg:flex-col">
         <div className="lg:flex-1 lg:overflow-y-auto custom-scrollbar">
           <div className="p-3 lg:p-6 space-y-4 lg:space-y-8">
           

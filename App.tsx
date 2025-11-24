@@ -103,7 +103,7 @@ function App() {
       </div>
 
       {/* Sidebar Control Panel */}
-      <div className={`${mobileView === 'panel' ? 'flex' : 'hidden'} lg:flex`}>
+      <div className={`${mobileView === 'panel' ? 'flex h-full' : 'hidden'} lg:flex`}>
         <ControlPanel
           boxes={boxes}
           onAddBoxes={handleAddBoxes}
